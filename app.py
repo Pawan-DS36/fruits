@@ -1,22 +1,22 @@
 import streamlit as st
 import pandas as pd
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 
-st.title("Disease Detection Using SVM")
+st.title("Diabetes Prediction App")
 
-data = pd.read_csv("fruits.csv")
+data = pd.read_csv("diabetes_data.csv")
 st.write(data)
 
-x = data[['Temperature', 'Heart_Rate']]
-y = data['Disease'].map({'No': 0, 'Yes': 1})
+x = data[['Age', 'Glucose_Level']]
+y = data['Diabetes'].map({'No': 0, 'Yes': 1})
 
-model = SVC()
+model = LogisticRegression()
 model.fit(x, y)
 
-temp = st.number_input("Enter Body Temperature:", 95.0, 105.0, step=0.5)
-hr = st.number_input("Enter Heart Rate:", 60.0, 120.0, step=1.0)
+age = st.number_input("Enter Age:", 18.0, 100.0, step=1.0)
+glucose = st.number_input("Enter Glucose Level:", 50.0, 200.0, step=1.0)
 
-prediction = model.predict([[temp, hr]])[0]
+prediction = model.predict([[age, glucose]])[0]
 result = "Yes" if prediction == 1 else "No"
 
-st.write("Disease Detected:", result)
+st.write("Diabetes Prediction:", result)

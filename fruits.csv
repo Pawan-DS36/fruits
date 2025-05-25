@@ -1,6 +1,6 @@
-Temperature,Heart_Rate,Disease
-98,72,No
-99,75,No
-101,90,Yes
-100,85,Yes
-97,70,No
+Age,Glucose_Level,Diabetes
+25,85,No
+30,90,No
+45,130,Yes
+50,150,Yes
+35,120,No
